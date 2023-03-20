@@ -12,7 +12,7 @@ public class Oncology extends Doctor{
         public Oncology (String docName, String dept, boolean isSurgeon, boolean isOnDuty) {
         this.name = docName;
         this.department = dept;
-        this.speciality = "ENT";
+        this.speciality = "Oncology";
         this.surgeon = isSurgeon;
         this.onDuty = isOnDuty;
         this.canPrescribe = true;

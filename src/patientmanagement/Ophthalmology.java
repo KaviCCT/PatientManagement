@@ -12,7 +12,7 @@ public class Ophthalmology extends Doctor{
         public Ophthalmology (String docName, String dept, boolean isSurgeon, boolean isOnDuty) {
         this.name = docName;
         this.department = dept;
-        this.speciality = "ENT";
+        this.speciality = "Ophthalmology";
         this.surgeon = isSurgeon;
         this.onDuty = isOnDuty;
         this.canPrescribe = true;

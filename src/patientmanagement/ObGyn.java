@@ -12,7 +12,7 @@ public class ObGyn extends Doctor{
         public ObGyn (String docName, String dept, boolean isSurgeon, boolean isOnDuty) {
         this.name = docName;
         this.department = dept;
-        this.speciality = "ENT";
+        this.speciality = "OB/GYN";
         this.surgeon = isSurgeon;
         this.onDuty = isOnDuty;
         this.canPrescribe = true;

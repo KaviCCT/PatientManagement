@@ -12,7 +12,7 @@ public class OccupationalTherapy extends Doctor {
         public OccupationalTherapy (String docName, String dept, boolean isSurgeon, boolean isOnDuty) {
         this.name = docName;
         this.department = dept;
-        this.speciality = "ENT";
+        this.speciality = "Occupational Therapy";
         this.surgeon = isSurgeon;
         this.onDuty = isOnDuty;
         this.canPrescribe = true;

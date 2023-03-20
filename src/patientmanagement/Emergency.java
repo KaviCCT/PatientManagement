@@ -9,10 +9,10 @@ package patientmanagement;
  * @author kavip
  */
 public class Emergency extends Doctor {
-        public Emergency (String docName, String dept, boolean isSurgeon, boolean isOnDuty) {
+        public Emergency (String docName, String dept, String spec, boolean isSurgeon, boolean isOnDuty) {
         this.name = docName;
         this.department = dept;
-        this.speciality = "ENT";
+        this.speciality = spec;
         this.surgeon = isSurgeon;
         this.onDuty = isOnDuty;
         this.canPrescribe = true;

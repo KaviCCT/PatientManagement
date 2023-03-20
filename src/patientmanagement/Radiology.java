@@ -4,6 +4,8 @@
  */
 package patientmanagement;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author kavip
@@ -12,7 +14,7 @@ public class Radiology extends Doctor{
         public Radiology (String docName, String dept, boolean isSurgeon, boolean isOnDuty) {
         this.name = docName;
         this.department = dept;
-        this.speciality = "ENT";
+        this.speciality = "Radiology";
         this.surgeon = isSurgeon;
         this.onDuty = isOnDuty;
         this.canPrescribe = false;
@@ -20,5 +22,47 @@ public class Radiology extends Doctor{
         this.canDischarge = false;
         this.canTransfer = true;
     }  
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public boolean isSurgeon() {
+        return surgeon;
+    }
+
+    public boolean isOnDuty() {
+        return onDuty;
+    }
+
+    public boolean isCanPrescribe() {
+        return canPrescribe;
+    }
+
+    public boolean isCanAdmit() {
+        return canAdmit;
+    }
+
+    public boolean isCanDischarge() {
+        return canDischarge;
+    }
+
+    public boolean isCanTransfer() {
+        return canTransfer;
+    }
+
+    public static ArrayList<Doctor> getDoctors() {
+        return doctors;
+    }
     
+        
+        
 }

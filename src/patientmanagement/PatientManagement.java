@@ -35,6 +35,7 @@ public class PatientManagement{
         
             String docName;
             String dept;
+            String spec;
             boolean isSurgeon = false;
             boolean isOnDuty = false;
             
@@ -56,6 +57,8 @@ public class PatientManagement{
                 System.out.println("Name: " + docName);
                 dept = fileLineArray[1];
                 System.out.println("Department: " + dept);
+                spec = fileLineArray[2];
+                System.out.println("Speciality: " + spec);
                 String surgeon = fileLineArray[3];
                 System.out.println("Surgeon: " + surgeon);
                 String duty = fileLineArray[4];
@@ -67,52 +70,52 @@ public class PatientManagement{
                     isOnDuty = true;
                 }
                 
-                ArrayList <Doctor> doctors = new ArrayList <>();
+               
 
                 switch(dept){
                     case"Cardiology":
-                        Cardiology card = new Cardiology("docName", "dept", isSurgeon, isOnDuty);
-                        doctors.add(card);
+                        Cardiology card = new Cardiology(docName, dept, isSurgeon, isOnDuty);
+                        Doctor.doctors.add(card);
                         break;
 
                     case"Rheumatology":
-                        Rheumatology rheum = new Rheumatology("docName", "dept", isSurgeon, isOnDuty);
-                        doctors.add(rheum);
+                        Rheumatology rheum = new Rheumatology(docName, dept, isSurgeon, isOnDuty);
+                        Doctor.doctors.add(rheum);
                         break;
 
                     case"ENT":
-                        ENT emt = new ENT("docName", "dept", isSurgeon, isOnDuty);
-                        doctors.add(emt);
+                        ENT emt = new ENT(docName, dept, isSurgeon, isOnDuty);
+                        Doctor.doctors.add(emt);
                         break;
 
                     case"Ophthalmology":
-                        Ophthalmology oph = new Ophthalmology("docName", "dept", isSurgeon, isOnDuty);
-                        doctors.add(oph);
+                        Ophthalmology oph = new Ophthalmology(docName, dept, isSurgeon, isOnDuty);
+                        Doctor.doctors.add(oph);
                         break;
 
                     case"Occupational Therapy":
-                        OccupationalTherapy ot = new OccupationalTherapy("docName", "dept", isSurgeon, isOnDuty);
-                        doctors.add(ot);
+                        OccupationalTherapy ot = new OccupationalTherapy(docName, dept, isSurgeon, isOnDuty);
+                        Doctor.doctors.add(ot);
                         break;
 
                     case"Radiology":
-                        Radiology rad = new Radiology("docName", "dept", isSurgeon, isOnDuty);
-                        doctors.add(rad);
+                        Radiology rad = new Radiology(docName, dept, isSurgeon, isOnDuty);
+                        Doctor.doctors.add(rad);
                         break;
 
                     case"Oncology":
-                        Oncology onc = new Oncology("docName", "dept", isSurgeon, isOnDuty);
-                        doctors.add(onc);
+                        Oncology onc = new Oncology(docName, dept, isSurgeon, isOnDuty);
+                        Doctor.doctors.add(onc);
                         break;
 
                     case"OB/GYN":
-                        ObGyn og = new ObGyn("docName", "dept", isSurgeon, isOnDuty);
-                        doctors.add(og);
+                        ObGyn og = new ObGyn(docName, dept, isSurgeon, isOnDuty);
+                        Doctor.doctors.add(og);
                         break;
 
                     case"Emergency":
-                        Emergency er = new Emergency("docName", "dept", isSurgeon, isOnDuty);
-                        doctors.add(er);
+                        Emergency er = new Emergency(docName, dept, spec, isSurgeon, isOnDuty);
+                        Doctor.doctors.add(er);
                         break;
 
                     default:
