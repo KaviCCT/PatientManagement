@@ -53,7 +53,7 @@ public class Patient implements PatientInterface{
             this.patientId = nextPatientId;
             nextPatientId = nextPatientId+1;
             this.complaints = complaints;
-            this.Department = complaints[0];
+            this.Department = this.getDepartment();
         }
     }
     

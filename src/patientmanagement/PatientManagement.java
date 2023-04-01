@@ -6,6 +6,7 @@ package patientmanagement;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -26,8 +27,10 @@ public class PatientManagement{
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         
+        DBConnector dbConn = new DBConnector();
+        dbConn.createDB();
         
         try {
             //Declaring and reading from text file path specified
@@ -42,6 +45,7 @@ public class PatientManagement{
             if (!file.hasNext()){
                 System.out.println(ANSI_RED + "That is an empty file." + ANSI_RESET);
             }
+            
             
             //Loop for reading all lines in file
             //Using .hasNext instead of .hasNextLine to avoid throwing errors for empty lines at end of file
@@ -69,7 +73,7 @@ public class PatientManagement{
                 if (duty.trim().toLowerCase().matches("yes")){
                     isOnDuty = true;
                 }
-                
+                System.out.println("***********************************");
                
 
                 switch(dept){
@@ -134,7 +138,9 @@ public class PatientManagement{
         String userChoice = "";    
         
        Login.login();
-            
+         
+       
+       
     }
     
 }

@@ -4,6 +4,7 @@
  */
 package patientmanagement;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -24,7 +25,7 @@ public class Login {
         public static Scanner userInput = new Scanner(System.in);
         public static String password = "";
         public static String userChoice = "";
-        public static void login(){
+        public static void login() throws SQLException{
             // WHILE LOOP USED TO CONTINUOUSLY PROMPT FOR USER INPUT UNTIL THE CORRECT PASSWORD IS ENTERED
             // boolean incorrectPassword PASSED FROM IncorrectPasswordException CLASS FOR VALIDATION
             while (IncorrectPasswordException.incorrectPassword){
@@ -83,6 +84,33 @@ public class Login {
 //                                }
 //                                Patient pat = new Patient("name", complaintsArray);
                                 PatientWorkflowOptions.patientWorkflow();
+                                break;
+                            case "B":
+                                PatientWorkflowOptions.inputPatient();
+                                break;
+                            case "C":
+                                PatientWorkflowOptions.searchPatient();
+                                break;
+                            case "D":
+                                PatientWorkflowOptions.transferPatient();
+                                break;
+                            case "E":
+                                
+                                PatientWorkflowOptions.admitPatient( PatientWorkflowOptions.inputPatient());
+                                break;
+                            case "F":
+                                PatientWorkflowOptions.transferPatient();
+                                break;
+                            case "G":
+                                PatientWorkflowOptions.transferPatient();
+                                break;
+                            case "H":
+                                PatientWorkflowOptions.transferPatient();
+                                break;
+                            case "Q":
+                              
+                                break;
+                                
                         }
                     }
                     break;

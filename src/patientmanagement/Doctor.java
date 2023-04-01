@@ -5,6 +5,8 @@
 package patientmanagement;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
+
 
 /**
  *
@@ -14,17 +16,67 @@ public  class Doctor {
 //    These fields will all be explicitly assigned values in the Child classes.
 //    This meands that every child class will be responsible for deciding what these values should be.
 //    Please see the Rheumatology class as an example
-    public String name;
-    public String department;
-    public String speciality;
-    public boolean surgeon;
-    public boolean onDuty;
-    public boolean canPrescribe;
-    public boolean canAdmit;
-    public boolean canDischarge;
-    public boolean canTransfer;
+    protected String name;
+    protected String department;
+    protected String speciality;
+    protected boolean surgeon;
+    protected boolean onDuty;
+    protected boolean canPrescribe;
+    protected boolean canAdmit;
+    protected boolean canDischarge;
+    protected boolean canTransfer;
     
     public static ArrayList <Doctor> doctors = new ArrayList <>();
+
+    public Doctor() {
+    }
+
+    public Doctor(String name, String department, String speciality, boolean surgeon, boolean onDuty, boolean canPrescribe, boolean canAdmit, boolean canDischarge, boolean canTransfer) {
+        this.name = name;
+        this.department = department;
+        this.speciality = speciality;
+        this.surgeon = surgeon;
+        this.onDuty = onDuty;
+        this.canPrescribe = canPrescribe;
+        this.canAdmit = canAdmit;
+        this.canDischarge = canDischarge;
+        this.canTransfer = canTransfer;
+    }
+    
+    
+    
+    public static Doctor getSurgeon (String department){
+        ListIterator <Doctor> docList = Doctor.doctors.listIterator();
+        
+        while(docList.hasNext()){
+            Doctor doc = docList.next();
+            
+            if ((doc.getDepartment().matches(department)) && (doc.canOperate())){
+               
+                return doc;
+            }
+
+        }
+        return null;
+    }
+    
+    
+    
+    public static Doctor getDoc (String department){
+        ListIterator <Doctor> docList = Doctor.doctors.listIterator();
+        
+        while(docList.hasNext()){
+            Doctor doc = docList.next();
+            if ((doc.getDepartment().matches(department)) && (doc.canPrescribe())){
+               // System.out.println("Assigned doctor: " + docList.next().getName());
+               
+               return doc;
+            }   
+   
+        }
+        return null;
+        //System.out.println("Assigned doctor: " + docList.next().getName());
+    }
     
     public boolean canOperate() {
         return surgeon && onDuty;
@@ -33,7 +85,7 @@ public  class Doctor {
         return canPrescribe && onDuty;
     }
 
-    public String getName() {
+    protected String getName() {
         return name;
     }
 
