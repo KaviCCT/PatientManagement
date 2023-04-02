@@ -41,7 +41,7 @@ public class Login {
                  // System.out.println(err.getMessage()); 
                 }// TESTING extends IOException
             }
-  
+            String dept = password;
             switch(password){
                 
                 case"Cardiology":
@@ -49,6 +49,8 @@ public class Login {
                 case"Oncology":
                 case"OB/GYN":
                 case"Emergency":
+                
+                    
                     
                     while (!userChoice.toUpperCase().trim().matches("Q")){
                         // OPTION MENU DISPLAYED TO TERMINAL WINDOW
@@ -56,81 +58,101 @@ public class Login {
                         System.out.println(ANSI_RED + "Please choose an option A, B, C, D, E, F, G, H or Q from the Menu below:" + ANSI_RESET);
                         System.out.println("A. Input patient details and automatically process patient");
                         System.out.println("B. Input patient details.");
-                        System.out.println("C. Search patient by name or patient number.");
-                        System.out.println("D. Transfer patient.");
-                        System.out.println("E. Admit patient.");
-                        System.out.println("F. Perform surgery.");
-                        System.out.println("G. Prescribe medication.");
-                        System.out.println("H. Discharge patient.");
+                        System.out.println("C. Transfer patient.");
+                        System.out.println("D. Admit patient.");
+                        System.out.println("E. Perform surgery.");
+                        System.out.println("F. Prescribe medication.");
+                        System.out.println("G. Discharge patient.");
+                        System.out.println("H. Search current patient list.");
+                        System.out.println("I. Search Inpatient records by name or patient number.");
                         System.out.println("Q. Logout.");   
                         System.out.println("--------------------------------------------------------------------------------------------------"); 
 
                         // switch-case CONDITIONAL STATEMENT USED TO ASSESS USER INPUT AND SORT THROUGH MENU
                         switch (userChoice = userInput.next().trim().toUpperCase()) { 
                             case "A":  
-//                                System.out.println("Please enter the patients first name:");
-//                                String patFirstName = userInput.next();
-//                                System.out.println("Please enter the patients last name:");
-//                                String patLastName = userInput.next();
-//                                System.out.println("Please enter the patients complaints:");
-//                                String complaintsLine = userInput.next();
-//                                String name = patFirstName + patLastName;
-//                                String complaintsArray [];
-//                                if (complaintsLine.contains(",")){
-//                                    complaintsArray  =  complaintsLine.split(",");
-//                                }
-//                                else {
-//                                    complaintsArray  = complaintsLine.split(" ");
-//                                }
-//                                Patient pat = new Patient("name", complaintsArray);
                                 PatientWorkflowOptions.patientWorkflow();
                                 break;
                             case "B":
                                 PatientWorkflowOptions.inputPatient();
                                 break;
                             case "C":
-                                PatientWorkflowOptions.searchPatient();
+                                PatientWorkflowOptions.transferPatient();
                                 break;
                             case "D":
-                                PatientWorkflowOptions.transferPatient();
-                                break;
-                            case "E":
-                                
                                 PatientWorkflowOptions.admitPatient( PatientWorkflowOptions.inputPatient());
                                 break;
-                            case "F":
-                                PatientWorkflowOptions.transferPatient();
+                            case "E":                              
+                                PatientWorkflowOptions.performSurgery(dept);
+                                break;
+                            case "F":                              
+                                PatientWorkflowOptions.prescribeMeds(dept);
                                 break;
                             case "G":
-                                PatientWorkflowOptions.transferPatient();
+                                PatientWorkflowOptions.dischargePatient();
                                 break;
                             case "H":
-                                PatientWorkflowOptions.transferPatient();
-                                break;
-                            case "Q":
-                              
-                                break;
                                 
+                                break;
+                            case "I":
+                                PatientWorkflowOptions.searchPatient();
+                                break;
+                            case "Q":// IF USER INPUTS Q OR q
+                                    // PRINTED MESSAGE TO CONSOLE WHEN USER CHOOSES TO QUIT
+                                    System.out.println(ANSI_BLUE + "\nGoodbye!" + ANSI_RESET);
+                                    userInput.close();
+                                break;      
+
                         }
                     }
                     break;
                 case"Rheumatology":
+                    
                     while (!userChoice.toUpperCase().trim().matches("Q")){
                         // OPTION MENU DISPLAYED TO TERMINAL WINDOW
                         System.out.println("--------------------------------------------------------------------------------------------------");
-                        System.out.println(ANSI_RED + "Please choose an option A, B, C, D, E, F or Q from the Menu below:" + ANSI_RESET);
+                        System.out.println(ANSI_RED + "Please choose an option A, B, D, F, G, H or Q from the Menu below:" + ANSI_RESET);
                         System.out.println("A. Input patient details and automatically process patient");
                         System.out.println("B. Input patient details.");
-                        System.out.println("C. Search patient by name or patient number.");
                         System.out.println("D. Admit patient.");
-                        System.out.println("E. Prescribe medication.");
-                        System.out.println("F. Discharge patient.");
+                        System.out.println("F. Prescribe medication.");
+                        System.out.println("G. Discharge patient.");
+                        System.out.println("H. Search current patient list.");
+                        System.out.println("I. Search Inpatient records by name or patient number.");
                         System.out.println("Q. Logout.");   
                         System.out.println("--------------------------------------------------------------------------------------------------"); 
 
                         // switch-case CONDITIONAL STATEMENT USED TO ASSESS USER INPUT AND SORT THROUGH MENU
                         switch (userChoice = userInput.next().trim().toUpperCase()) { 
-                            case "A":   
+                            case "A":  
+                                PatientWorkflowOptions.patientWorkflow();
+                                break;
+                            case "B":
+                                PatientWorkflowOptions.inputPatient();
+                                break;
+                            case "D":
+                                PatientWorkflowOptions.admitPatient( PatientWorkflowOptions.inputPatient());
+                                break;
+                            case "E":                              
+                                PatientWorkflowOptions.performSurgery(dept);
+                                break;
+                            case "F":
+                                PatientWorkflowOptions.prescribeMeds(dept);
+                                break;
+                            case "G":
+                                PatientWorkflowOptions.dischargePatient();
+                                break;
+                            case "H":
+                                
+                                break;
+                            case "I":
+                                PatientWorkflowOptions.searchPatient();
+                                break;
+                            case "Q":// IF USER INPUTS Q OR q
+                                    // PRINTED MESSAGE TO CONSOLE WHEN USER CHOOSES TO QUIT
+                                    System.out.println(ANSI_BLUE + "\nGoodbye!" + ANSI_RESET);
+                                    userInput.close();
+                                break;      
                         }
                     }
                     break;      
@@ -138,20 +160,49 @@ public class Login {
                     while (!userChoice.toUpperCase().trim().matches("Q")){
                         // OPTION MENU DISPLAYED TO TERMINAL WINDOW
                         System.out.println("--------------------------------------------------------------------------------------------------");
-                        System.out.println(ANSI_RED + "Please choose an option A, B, C, D, E, F, G or Q from the Menu below:" + ANSI_RESET);
+                        System.out.println(ANSI_RED + "Please choose an option A, B, D, E, F, G, H or Q from the Menu below:" + ANSI_RESET);
                         System.out.println("A. Input patient details and automatically process patient");
                         System.out.println("B. Input patient details.");
-                        System.out.println("C. Search patient by name or patient number.");
                         System.out.println("D. Admit patient.");
                         System.out.println("E. Perform surgery.");
                         System.out.println("F. Prescribe medication.");
                         System.out.println("G. Discharge patient.");
+                        System.out.println("H. Search current patient list.");
+                        System.out.println("I. Search Inpatient records by name or patient number.");
                         System.out.println("Q. Logout.");   
                         System.out.println("--------------------------------------------------------------------------------------------------"); 
 
                         // switch-case CONDITIONAL STATEMENT USED TO ASSESS USER INPUT AND SORT THROUGH MENU
                         switch (userChoice = userInput.next().trim().toUpperCase()) { 
-                            case "A":   
+                            case "A":  
+                                PatientWorkflowOptions.patientWorkflow();
+                                break;
+                            case "B":
+                                PatientWorkflowOptions.inputPatient();
+                                break;
+                            case "D":
+                                PatientWorkflowOptions.admitPatient( PatientWorkflowOptions.inputPatient());
+                                break;
+                            case "E":                              
+                                PatientWorkflowOptions.performSurgery(dept);
+                                break;
+                            case "F":
+                                PatientWorkflowOptions.prescribeMeds(dept);
+                                break;
+                            case "G":
+                                PatientWorkflowOptions.dischargePatient();
+                                break;
+                            case "H":
+                                
+                                break;
+                            case "I":
+                                PatientWorkflowOptions.searchPatient();
+                                break;
+                            case "Q":// IF USER INPUTS Q OR q
+                                    // PRINTED MESSAGE TO CONSOLE WHEN USER CHOOSES TO QUIT
+                                    System.out.println(ANSI_BLUE + "\nGoodbye!" + ANSI_RESET);
+                                    userInput.close();
+                                break;      
                         }
                     }
                     break;
@@ -159,18 +210,37 @@ public class Login {
                     while (!userChoice.toUpperCase().trim().matches("Q")){
                         // OPTION MENU DISPLAYED TO TERMINAL WINDOW
                         System.out.println("--------------------------------------------------------------------------------------------------");
-                        System.out.println(ANSI_RED + "Please choose an option A, B, C, D, E or Q from the Menu below:" + ANSI_RESET);
-                        System.out.println("A. Input patient details and automatically process patient");
+                        System.out.println(ANSI_RED + "Please choose an option B, F, G, H or Q from the Menu below:" + ANSI_RESET);
                         System.out.println("B. Input patient details.");
-                        System.out.println("C. Search patient by name or patient number.");
-                        System.out.println("D. Prescribe medication.");
-                        System.out.println("E. Discharge patient.");
+                        System.out.println("F. Prescribe medication.");
+                        System.out.println("G. Discharge patient.");
+                        System.out.println("H. Search current patient list.");
+                        System.out.println("I. Search Inpatient records by name or patient number.");
                         System.out.println("Q. Logout.");   
                         System.out.println("--------------------------------------------------------------------------------------------------"); 
 
                         // switch-case CONDITIONAL STATEMENT USED TO ASSESS USER INPUT AND SORT THROUGH MENU
                         switch (userChoice = userInput.next().trim().toUpperCase()) { 
-                            case "A":   
+                            case "B":
+                                PatientWorkflowOptions.inputPatient();
+                                break;
+                            case "F":
+                                PatientWorkflowOptions.prescribeMeds(dept);
+                                break;
+                            case "G":
+                                PatientWorkflowOptions.dischargePatient();
+                                break;
+                            case "H":
+                                
+                                break;
+                            case "I":
+                                PatientWorkflowOptions.searchPatient();
+                                break;
+                            case "Q":// IF USER INPUTS Q OR q
+                                    // PRINTED MESSAGE TO CONSOLE WHEN USER CHOOSES TO QUIT
+                                    System.out.println(ANSI_BLUE + "\nGoodbye!" + ANSI_RESET);
+                                    userInput.close();
+                                break;      
                         }
                     }
                     break;
@@ -178,16 +248,33 @@ public class Login {
                     while (!userChoice.toUpperCase().trim().matches("Q")){
                         // OPTION MENU DISPLAYED TO TERMINAL WINDOW
                         System.out.println("--------------------------------------------------------------------------------------------------");
-                        System.out.println(ANSI_RED + "Please choose an option A, B, C or Q from the Menu below:" + ANSI_RESET);
-                        System.out.println("A. Input patient details.");
-                        System.out.println("B. Search patient by name or patient number.");
+                        System.out.println(ANSI_RED + "Please choose an option B, C, H or Q from the Menu below:" + ANSI_RESET);
+                        System.out.println("B. Input patient details.");
                         System.out.println("C. Transfer patient.");
+                        System.out.println("H. Search current patient list.");
+                        System.out.println("I. Search Inpatient records by name or patient number.");
                         System.out.println("Q. Logout.");   
-                        System.out.println("--------------------------------------------------------------------------------------------------"); 
+                        System.out.println("--------------------------------------------------------------------------------------------------");
 
                         // switch-case CONDITIONAL STATEMENT USED TO ASSESS USER INPUT AND SORT THROUGH MENU
                         switch (userChoice = userInput.next().trim().toUpperCase()) { 
-                            case "A":   
+                            case "B":
+                                PatientWorkflowOptions.inputPatient();
+                                break;
+                            case "C":
+                                PatientWorkflowOptions.transferPatient();
+                                break;
+                            case "H":
+                                
+                                break;
+                            case "I":
+                                PatientWorkflowOptions.searchPatient();
+                                break;
+                            case "Q":// IF USER INPUTS Q OR q
+                                    // PRINTED MESSAGE TO CONSOLE WHEN USER CHOOSES TO QUIT
+                                    System.out.println(ANSI_BLUE + "\nGoodbye!" + ANSI_RESET);
+                                    userInput.close();
+                                break;      
                         }
                     }
                     break;

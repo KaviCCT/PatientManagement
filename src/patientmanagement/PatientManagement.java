@@ -27,12 +27,13 @@ public class PatientManagement{
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+
+    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException  {
         
-        DBConnector dbConn = new DBConnector();
-        dbConn.createDB();
+       DBConnector dbConn = new DBConnector();
+       dbConn.createDB();
         
-        try {
+      try {
             //Declaring and reading from text file path specified
             Scanner file = new Scanner(new FileReader("C:\\Users\\kavip\\Desktop\\New folder\\Study\\Applied Software Development\\Java Programming Object Oriented\\24_3_ Sláintecare Doctor Info.csv"));
         
@@ -128,15 +129,12 @@ public class PatientManagement{
                 } 
                     
             }
-        } catch (FileNotFoundException ex) {
-            System.out.println(ANSI_RED + "File not found." + ANSI_RESET);;
+        }catch (FileNotFoundException ex) {
+            System.out.println(ANSI_RED + "File not found." + ANSI_RESET);
         }
+
         
-        // CREATING A NEW SCANNER OBJECT TO TAKE USER INPUT
-        Scanner userInput = new Scanner (System.in);
-        // DECLARING AND INITIALISING VARIABLES FOR CODE
-        String userChoice = "";    
-        
+      
        Login.login();
          
        

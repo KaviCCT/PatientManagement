@@ -4,8 +4,15 @@
  */
 package patientmanagement;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
+
 import java.util.ListIterator;
+
+
+import java.util.ListIterator;
+import java.util.Scanner;
 
 
 /**
@@ -13,6 +20,13 @@ import java.util.ListIterator;
  * @author kavip
  */
 public  class Doctor {
+    
+    //Dcelaring ANSI_RESET so we can reset the colour
+    public static final String ANSI_RESET = "\u001B[30m";
+    //Dcelaring ANSI_RED colour for error message use
+    public static final String ANSI_RED = "\u001B[31m";
+    
+    
 //    These fields will all be explicitly assigned values in the Child classes.
 //    This meands that every child class will be responsible for deciding what these values should be.
 //    Please see the Rheumatology class as an example
@@ -28,8 +42,13 @@ public  class Doctor {
     
     public static ArrayList <Doctor> doctors = new ArrayList <>();
 
+
     public Doctor() {
     }
+
+ 
+    
+    
 
     public Doctor(String name, String department, String speciality, boolean surgeon, boolean onDuty, boolean canPrescribe, boolean canAdmit, boolean canDischarge, boolean canTransfer) {
         this.name = name;
@@ -77,7 +96,7 @@ public  class Doctor {
         return null;
         //System.out.println("Assigned doctor: " + docList.next().getName());
     }
-    
+
     public boolean canOperate() {
         return surgeon && onDuty;
     }
