@@ -4,138 +4,50 @@
  */
 package patientmanagement;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 /**
  *
- * @author kavip
+ * STUDENT NAME:    Kavi Patak
+ * STUDENT ID:      sba22391
+ * 
+ * I WOULD LIKE TO APOLOGISE IN ADVANCE FOR THE COMMENTED OUT CODE INCLUDED IN MY SUBMISSION
+ * I ENCOUNTERED MASSIVE SETBACKS IN MY NAIVE AND INEXPERIENCED ATTEMPTS AT BRANCHING IN GITHUB, 
+ * WHICH HAS SET ME BACK A COUPLE OF DAYS AS WELL AS ENDED ANY TRUST IN GITHUB VERSION CONTROL (FOR NOW).
+ * ADDITIONAL LINES OF CODE AND UNFAMILIAR SCRIPTS SOMEHOW APPERED TRHOUGHOUT MY PROJECT. SINCE 
+ * REMOVING THEM AND ATTEMPTING TO REWRITE MY CODE, MY IDE HAS BEEN PERFORMING UNEXPECTECTEDLY WITH ERRORS 
+ * APPEARING AND DISAPEARING SPONTANEOUSLY. FOR THESE REASONS, I HAVE BEEN RELUCTANT TO DELETE EXISTING AND 
+ * WORKING CODE IN MY ATTEMPTS AT IMPLEMENTING SOLID DESIGN PRINCIPLES
+ * 
+ * GITHUB LINK; https://github.com/KaviCCT/PatientManagement.git
+ * 
  */
+
+
 public class PatientManagement{
 
     
-        //Dcelaring ANSI_RESET so we can reset the colour
-    public static final String ANSI_RESET = "\u001B[30m";
-    //Dcelaring ANSI_RED colour for error message use
-    public static final String ANSI_RED = "\u001B[31m";
     /**
      * @param args the command line arguments
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.lang.InstantiationException
+     * @throws java.lang.IllegalAccessException
+     * @throws java.sql.SQLException
      */
 
+    
+    
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException  {
-        
-       DBConnector dbConn = new DBConnector();
-       dbConn.createDB();
-        
-      try {
-            //Declaring and reading from text file path specified
-            Scanner file = new Scanner(new FileReader("C:\\Users\\kavip\\Desktop\\New folder\\Study\\Applied Software Development\\Java Programming Object Oriented\\24_3_ Sláintecare Doctor Info.csv"));
-        
-            String docName;
-            String dept;
-            String spec;
-            boolean isSurgeon = false;
-            boolean isOnDuty = false;
-            
-            if (!file.hasNext()){
-                System.out.println(ANSI_RED + "That is an empty file." + ANSI_RESET);
-            }
-            
-            
-            //Loop for reading all lines in file
-            //Using .hasNext instead of .hasNextLine to avoid throwing errors for empty lines at end of file
-            while (file.hasNextLine()){
-                
-                //Skipp empty lines in input file
-                file.skip("[\\s]*");
-            
-                String fileLine = file.nextLine();
-                System.out.println(fileLine);
-                String fileLineArray[] = fileLine.split(",");
-                docName = fileLineArray[0];
-                System.out.println("Name: " + docName);
-                dept = fileLineArray[1];
-                System.out.println("Department: " + dept);
-                spec = fileLineArray[2];
-                System.out.println("Speciality: " + spec);
-                String surgeon = fileLineArray[3];
-                System.out.println("Surgeon: " + surgeon);
-                String duty = fileLineArray[4];
-                System.out.println("On duty: " + duty);
-                if(surgeon.trim().toLowerCase().matches("yes")){
-                    isSurgeon = true;
-                }
-                if (duty.trim().toLowerCase().matches("yes")){
-                    isOnDuty = true;
-                }
-                System.out.println("***********************************");
-               
-
-                switch(dept){
-                    case"Cardiology":
-                        Cardiology card = new Cardiology(docName, dept, isSurgeon, isOnDuty);
-                        Doctor.doctors.add(card);
-                        break;
-
-                    case"Rheumatology":
-                        Rheumatology rheum = new Rheumatology(docName, dept, isSurgeon, isOnDuty);
-                        Doctor.doctors.add(rheum);
-                        break;
-
-                    case"ENT":
-                        ENT emt = new ENT(docName, dept, isSurgeon, isOnDuty);
-                        Doctor.doctors.add(emt);
-                        break;
-
-                    case"Ophthalmology":
-                        Ophthalmology oph = new Ophthalmology(docName, dept, isSurgeon, isOnDuty);
-                        Doctor.doctors.add(oph);
-                        break;
-
-                    case"Occupational Therapy":
-                        OccupationalTherapy ot = new OccupationalTherapy(docName, dept, isSurgeon, isOnDuty);
-                        Doctor.doctors.add(ot);
-                        break;
-
-                    case"Radiology":
-                        Radiology rad = new Radiology(docName, dept, isSurgeon, isOnDuty);
-                        Doctor.doctors.add(rad);
-                        break;
-
-                    case"Oncology":
-                        Oncology onc = new Oncology(docName, dept, isSurgeon, isOnDuty);
-                        Doctor.doctors.add(onc);
-                        break;
-
-                    case"OB/GYN":
-                        ObGyn og = new ObGyn(docName, dept, isSurgeon, isOnDuty);
-                        Doctor.doctors.add(og);
-                        break;
-
-                    case"Emergency":
-                        Emergency er = new Emergency(docName, dept, spec, isSurgeon, isOnDuty);
-                        Doctor.doctors.add(er);
-                        break;
-
-                    default:
-                    // default AS A CATCH WITH ERROR MESSAGE PRINTED TO TERMINAL
-                    System.out.println(ANSI_RED +"\nThat is an invalid option." + ANSI_RESET);
-                } 
-                    
-            }
-        }catch (FileNotFoundException ex) {
-            System.out.println(ANSI_RED + "File not found." + ANSI_RESET);
-        }
-
-        
-      
-       Login.login();
+//        //CONNECTION TO THE DATABASE AND TABLE SETUP
+//       DBConnector dbConn = new DBConnector();
+//       dbConn.createDB();
+    DatabaseSetup.createDB();
+ 
+// ACCESSIGN STATIC CLASS METHODS 
+// INIATING STAFFLIST METHOD IN STAFFIMPORT CLASS TO READ CURRENT STAFF
+    staffImport.staffList();
+// LOGIN MENU CALLED
+    Login.login();
          
        
        

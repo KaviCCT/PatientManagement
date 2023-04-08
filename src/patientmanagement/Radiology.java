@@ -8,10 +8,17 @@ import java.util.ArrayList;
 
 /**
  *
- * @author kavip
+ * STUDENT NAME:    Kavi Patak
+ * STUDENT ID:      sba22391
+ * 
  */
+
+    // Radilogy CLASSES BASED ON DOCTOR/DEPARTMENT PERMISSIONS
+    // EXTENDS DOCTOR CLASS AS IT INHERENTS THE SAME INSTANCE FIELDS AND METHODS
+    // SPECIFIC CLASS ATTRIBUTES EXPLICITLY SET WITHIN CONSTRUCTORS BASES ON DEPARTMENT PERMISSIONS
 public class Radiology extends Doctor{
-    
+        // String docName, String dept, boolean isSuregon, boolean isOnDuty TAKEN AS PARAMETERS 
+        // FOR CONSTRUCTION WHEN READING FROM STAFF CSV FILE
         public Radiology (String docName, String dept, boolean isSurgeon, boolean isOnDuty) {
         this.name = docName;
         this.department = dept;
@@ -22,12 +29,19 @@ public class Radiology extends Doctor{
         this.canAdmit = false; 
         this.canDischarge = false;
         this.canTransfer = true;
-    }  
+    }
+     // SPECIFIC CLASS ATTRIBUTES EXPLICITLY SET WITHIN CONSTRUCTORS BASES ON DEPARTMENT PERMISSIONS   
+     public Radiology() {
+        this.department = "Radiology";
+        this.surgeon = false;
+        this.canPrescribe = false;
+        this.canAdmit = false;
+        this.canDischarge = false;
+        this.canTransfer = true;
+     }
 
-//    public Radiology(String docName, String dept, boolean isSurgeon, boolean isOnDuty) {
-//    super( docName, dept, "Radiology", isSurgeon, isOnDuty, false, false, false, true);
-//    }
-
+    // GETTERS AND SETTERS AUTOMATICALLY SET FOR FUTURES DEVELOPEMENT USE
+        @Override
     public String getName() {
         return name;
     }
@@ -36,6 +50,7 @@ public class Radiology extends Doctor{
         this.name = name;
     }
 
+        @Override
     public String getDepartment() {
         return department;
     }
@@ -44,6 +59,7 @@ public class Radiology extends Doctor{
         this.department = department;
     }
 
+        @Override
     public String getSpeciality() {
         return speciality;
     }
@@ -52,6 +68,7 @@ public class Radiology extends Doctor{
         this.speciality = speciality;
     }
 
+        @Override
     public boolean isSurgeon() {
         return surgeon;
     }
@@ -60,6 +77,7 @@ public class Radiology extends Doctor{
         this.surgeon = surgeon;
     }
 
+        @Override
     public boolean isOnDuty() {
         return onDuty;
     }
@@ -68,45 +86,31 @@ public class Radiology extends Doctor{
         this.onDuty = onDuty;
     }
 
+        @Override
     public boolean isCanPrescribe() {
         return canPrescribe;
     }
 
-    public void setCanPrescribe(boolean canPrescribe) {
-        this.canPrescribe = canPrescribe;
-    }
 
+        @Override
     public boolean isCanAdmit() {
         return canAdmit;
     }
 
-    public void setCanAdmit(boolean canAdmit) {
-        this.canAdmit = canAdmit;
-    }
-
+        @Override
     public boolean isCanDischarge() {
         return canDischarge;
     }
 
-    public void setCanDischarge(boolean canDischarge) {
-        this.canDischarge = canDischarge;
-    }
-
+        @Override
     public boolean isCanTransfer() {
         return canTransfer;
-    }
-
-    public void setCanTransfer(boolean canTransfer) {
-        this.canTransfer = canTransfer;
     }
 
     public static ArrayList<Doctor> getDoctors() {
         return doctors;
     }
 
-    public static void setDoctors(ArrayList<Doctor> doctors) {
-        Doctor.doctors = doctors;
-    }
         
         
         

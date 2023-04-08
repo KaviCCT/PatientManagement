@@ -8,9 +8,19 @@ import java.util.ArrayList;
 
 /**
  *
- * @author kavip
+ * STUDENT NAME:    Kavi Patak
+ * STUDENT ID:      sba22391
+ * 
  */
+
+        // Emergency CLASSES BASED ON DOCTOR/DEPARTMENT PERMISSIONS
+        // EXTENDS DOCTOR CLASS AS IT INHERENTS THE SAME INSTANCE FIELDS AND METHODS
 public class Emergency extends Doctor {
+
+        // SPECIFIC CLASS ATTRIBUTES EXPLICITLY SET WITHIN CONSTRUCTORS BASES ON DEPARTMENT PERMISSIONS
+        // String docName, String dept, boolean isSuregon, boolean isOnDuty TAKEN AS PARAMETERS 
+        // FOR CONSTRUCTION WHEN READING FROM STAFF CSV FILE    
+        // EMERGENCY IS THE ONLY DEPARTMENT WHERE SPECIALTY VARIES FROM DEPARTMENT AND IS SUCH ACCOUNTED FOR ON CONSTRUCTION
         public Emergency (String docName, String dept, String spec, boolean isSurgeon, boolean isOnDuty) {
         this.name = docName;
         this.department = dept;
@@ -21,12 +31,21 @@ public class Emergency extends Doctor {
         this.canAdmit = true; 
         this.canDischarge = true;
         this.canTransfer = true;
-    } 
+    }
+        
+     // SPECIFIC CLASS ATTRIBUTES EXPLICITLY SET WITHIN CONSTRUCTORS BASES ON DEPARTMENT PERMISSIONS    
+     public Emergency() {
+        this.department = "Emergency";
+        this.surgeon = true;
+        this.canPrescribe = true;
+        this.canAdmit = true;
+        this.canDischarge = true;
+        this.canTransfer = true;
+     }
 
-//    public Emergency(String docName, String dept, String spec, boolean isSurgeon, boolean isOnDuty) {
-//    super( docName, dept, spec, isSurgeon, isOnDuty, true, true, true, true);
-//    }
 
+     // GETTERS AND SETTERS AUTOMATICALLY SET FOR FUTURES DEVELOPEMENT USE 
+        @Override
     public String getName() {
         return name;
     }
@@ -35,6 +54,7 @@ public class Emergency extends Doctor {
         this.name = name;
     }
 
+        @Override
     public String getDepartment() {
         return department;
     }
@@ -43,6 +63,7 @@ public class Emergency extends Doctor {
         this.department = department;
     }
 
+        @Override
     public String getSpeciality() {
         return speciality;
     }
@@ -51,6 +72,7 @@ public class Emergency extends Doctor {
         this.speciality = speciality;
     }
 
+        @Override
     public boolean isSurgeon() {
         return surgeon;
     }
@@ -59,6 +81,7 @@ public class Emergency extends Doctor {
         this.surgeon = surgeon;
     }
 
+        @Override
     public boolean isOnDuty() {
         return onDuty;
     }
@@ -67,6 +90,7 @@ public class Emergency extends Doctor {
         this.onDuty = onDuty;
     }
 
+        @Override
     public boolean isCanPrescribe() {
         return canPrescribe;
     }
@@ -75,6 +99,7 @@ public class Emergency extends Doctor {
         this.canPrescribe = canPrescribe;
     }
 
+        @Override
     public boolean isCanAdmit() {
         return canAdmit;
     }
@@ -83,6 +108,7 @@ public class Emergency extends Doctor {
         this.canAdmit = canAdmit;
     }
 
+        @Override
     public boolean isCanDischarge() {
         return canDischarge;
     }
@@ -91,6 +117,7 @@ public class Emergency extends Doctor {
         this.canDischarge = canDischarge;
     }
 
+        @Override
     public boolean isCanTransfer() {
         return canTransfer;
     }
@@ -102,11 +129,7 @@ public class Emergency extends Doctor {
     public static ArrayList<Doctor> getDoctors() {
         return doctors;
     }
-
-    public static void setDoctors(ArrayList<Doctor> doctors) {
-        Doctor.doctors = doctors;
-    }
-        
+ 
         
 }
 

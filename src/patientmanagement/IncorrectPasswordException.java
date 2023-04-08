@@ -7,20 +7,22 @@ package patientmanagement;
 import java.io.IOException;
 
 /**
- *  STUDENT NAME:   Kavi Patak
- *  STUDENT ID:     sba22391     
+ *
+ * STUDENT NAME:    Kavi Patak
+ * STUDENT ID:      sba22391
+ * 
  */
 
 // IncorrectPasswordException CLASS WHICH EXTENDS IOException
 public class IncorrectPasswordException  extends IOException {
 
-    //Declaring ANSI_RESET so we can reset the colour
+    //Dcelaring ANSI_RESET so we can reset the colour
     public static final String ANSI_RESET = "\u001B[30m";
-    //Declaring ANSI_RED colour for error message use
+    //Dcelaring ANSI colours for console message use
     public static final String ANSI_RED = "\u001B[31m";
-    //Declaring ANSI_BLUE colour for User Interface use
     public static final String ANSI_BLUE = "\u001B[34m";
-    
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_CYAN = "\u001B[36m";
     
     // boolean incorrectPassword USED FOR VALIDATION LOOP 
     // static TO BE SHARED ACROSS CLASSES
@@ -36,11 +38,12 @@ public class IncorrectPasswordException  extends IOException {
     // passwordChecker() METHOD public AND static TO BE ACCESSED FROM OUTSIDE CLASS
     // METHOD VALIDATES USER INPUT TAKEN AS A String PARAMETER
     // THROWS IncorrectPasswordException FOR FUTURE DEVELOPERS BENEFIT
+    // PASSWORDS SET BASE ON MENU OPTIONS WHICH IS BASED ON DEPARTMENTS
     public static void passwordChecker(String password) throws IncorrectPasswordException{
         if ((password.matches("Cardiology")) || (password.matches("Rheumatology")) || (password.matches("ENT")) || (password.matches("Ophthalmology")) || 
-                (password.matches("Occupational Therapy")) || (password.matches("Radiology")) || (password.matches("Oncology"))  || (password.matches("OB/GYN")) 
-                || (password.matches("Emergency"))){ // REGEX PATTERN USED TO MATCH PASSWORD
-            System.out.println(ANSI_BLUE + "\nPassword excepted. Welcome!!" + ANSI_RESET);
+                (password.matches("Occupational")) || (password.matches("Radiology")) || (password.matches("Oncology"))  || (password.matches("OB/GYN")) 
+                || (password.matches("Emergency"))){ // REGEX PATTERN USED TO MATCH PASSWORDS
+            System.out.println(ANSI_GREEN + "\nPassword excepted. Welcome!!" + ANSI_RESET);
             incorrectPassword = false; // boolean incorectPassword CHANGED TO false TO END LOOP
             
         }

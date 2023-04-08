@@ -8,9 +8,17 @@ import java.util.ArrayList;
 
 /**
  *
- * @author kavip
+ * STUDENT NAME:    Kavi Patak
+ * STUDENT ID:      sba22391
+ * 
  */
+
+    // Rheumatology CLASSES BASED ON DOCTOR/DEPARTMENT PERMISSIONS
+    // EXTENDS DOCTOR CLASS AS IT INHERENTS THE SAME INSTANCE FIELDS AND METHODS
+    // SPECIFIC CLASS ATTRIBUTES EXPLICITLY SET WITHIN CONSTRUCTORS BASES ON DEPARTMENT PERMISSIONS
 public class Rheumatology extends Doctor {
+    // String docName, String dept, boolean isSuregon, boolean isOnDuty TAKEN AS PARAMETERS 
+    // FOR CONSTRUCTION WHEN READING FROM STAFF CSV FILE
     public Rheumatology(String docName, String dept, boolean isSurgeon, boolean isOnDuty) {
         this.name = docName;
         this.department = dept;
@@ -23,11 +31,17 @@ public class Rheumatology extends Doctor {
         // explicitly declaring false instead of calling super() for better code readibility
         this.canTransfer = false;
     }
+    // SPECIFIC CLASS ATTRIBUTES EXPLICITLY SET WITHIN CONSTRUCTORS BASES ON DEPARTMENT PERMISSIONS
+    public Rheumatology() {
+        this.department = "Rheumatology";
+        this.surgeon = false;
+        this.canPrescribe = true;
+        this.canAdmit = true;
+        this.canDischarge = true;
+        this.canTransfer = false;
+    }
 
-//    public Rheumatology(String docName, String dept, boolean isSurgeon, boolean isOnDuty) {
-//    super( docName, dept, "Rheumatology", isSurgeon, isOnDuty, true, true, true, false);
-//    }
-
+    // GETTERS AND SETTERS AUTOMATICALLY SET FOR FUTURES DEVELOPEMENT USE
     public String getName() {
         return name;
     }
@@ -72,42 +86,23 @@ public class Rheumatology extends Doctor {
         return canPrescribe;
     }
 
-    public void setCanPrescribe(boolean canPrescribe) {
-        this.canPrescribe = canPrescribe;
-    }
 
     public boolean isCanAdmit() {
         return canAdmit;
     }
 
-    public void setCanAdmit(boolean canAdmit) {
-        this.canAdmit = canAdmit;
-    }
 
     public boolean isCanDischarge() {
         return canDischarge;
-    }
-
-    public void setCanDischarge(boolean canDischarge) {
-        this.canDischarge = canDischarge;
     }
 
     public boolean isCanTransfer() {
         return canTransfer;
     }
 
-    public void setCanTransfer(boolean canTransfer) {
-        this.canTransfer = canTransfer;
-    }
-
     public static ArrayList<Doctor> getDoctors() {
         return doctors;
     }
 
-    public static void setDoctors(ArrayList<Doctor> doctors) {
-        Doctor.doctors = doctors;
-    }
-    
-    
     
 }
